@@ -1,0 +1,31 @@
+language: c
+before_install:
+  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_1.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :1 -ac -screen 0 1280x1024x16"
+  - sleep 3
+  - export DISPLAY=:1.0
+  - wget http://downloads.arduino.cc/arduino-${IDE_VERSION}-linux64.tar.xz
+  - tar xf arduino-${IDE_VERSION}-linux64.tar.xz
+  - sudo mv arduino-${IDE_VERSION} /usr/local/share/arduino
+  - sudo ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino
+install:
+  - ln -s $PWD/libraries/aREST-master /usr/local/share/arduino/libraries/aREST-master
+  - ln -s $PWD/libraries/NTPClient /usr/local/share/arduino/libraries/NTPClient
+  - ln -s $PWD/libraries/AutomatedIrrigatingSystem-MegaOnly /usr/local/share/arduino/libraries/AutomatedIrrigatingSystem-MegaOnly
+  - ln -s $PWD/libraries/AutomatedIrrigatingSystem-Shared /usr/local/share/arduino/libraries/AutomatedIrrigatingSystem-Shared
+  - arduino --pref "boardsmanager.additional.urls=http://arduino.esp8266.com/stable/package_esp8266com_index.json" --save-prefs
+  - arduino --install-boards esp8266:esp8266
+  - arduino --pref "compiler.warning_level=all" --save-prefs
+script:
+  - arduino --verbose --verify --board ${BOARD} ${SOURCE}
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+
+env:
+  global:
+    - IDE_VERSION=1.8.8
+  matrix:
+    - BOARD="arduino:avr:mega:cpu=atmega2560" SOURCE="$PWD/srcs/ArduinoMega/ArduinoMega.ino"
+    - BOARD="arduino:avr:mega:cpu=atmega2560" SOURCE="$PWD/srcs/ArduinoMega-SaveSchedules/ArduinoMega-SaveSchedules.ino"
+    - BOARD="esp8266:esp8266:generic:xtal=80,vt=flash,exception=disabled,ResetMethod=ck,CrystalFreq=26,FlashFreq=40,FlashMode=dout,eesz=512K,led=2,ip=lm2f,dbg=Disabled,lvl=None____,wipe=none,baud=115200" SOURCE="$PWD/srcs/ESP8266/ESP8266.ino"
