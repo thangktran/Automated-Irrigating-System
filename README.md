@@ -1,4 +1,4 @@
-# Automated Irrigating System [![Build Status](https://travis-ci.org/thangktran/Automated-Irrigating-System.svg?branch=master)](https://travis-ci.org/thangktran/Automated-Irrigating-System)
+# Automated Irrigating System [![Build Status](https://travis-ci.org/thangktran/automated-irrigating-system.svg?branch=master)](https://travis-ci.org/thangktran/automated-irrigating-system)
 
 A fully atomated irrgating system with hardware temperature monitoring and REST API.
 

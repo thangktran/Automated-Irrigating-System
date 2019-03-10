@@ -1,0 +1,6 @@
+[submodule "libraries/NTPClient"]
+	path = libraries/NTPClient
+	url = https://github.com/arduino-libraries/NTPClient
+[submodule "libraries/aREST"]
+	path = libraries/aREST
+	url = https://github.com/thangktran/aREST

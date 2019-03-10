@@ -8,7 +8,7 @@ before_install:
   - sudo mv arduino-${IDE_VERSION} /usr/local/share/arduino
   - sudo ln -s /usr/local/share/arduino/arduino /usr/local/bin/arduino
 install:
-  - ln -s $PWD/libraries/aREST-master /usr/local/share/arduino/libraries/aREST-master
+  - ln -s $PWD/libraries/aREST /usr/local/share/arduino/libraries/aREST
   - ln -s $PWD/libraries/NTPClient /usr/local/share/arduino/libraries/NTPClient
   - ln -s $PWD/libraries/AutomatedIrrigatingSystem-MegaOnly /usr/local/share/arduino/libraries/AutomatedIrrigatingSystem-MegaOnly
   - ln -s $PWD/libraries/AutomatedIrrigatingSystem-Shared /usr/local/share/arduino/libraries/AutomatedIrrigatingSystem-Shared
