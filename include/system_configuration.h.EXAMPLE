@@ -1,0 +1,33 @@
+#pragma once
+
+#include <stdint.h>
+
+namespace automated_irrigating_system
+{
+namespace system_configuration
+{
+
+// WIFI credential.
+const char* SSID = "YOUR-ACCESS-POINT-SSID";
+const char* WIFI_PASSWORD = "YOUR-ACCESS-POINT-PASSWORD";
+
+// REST configurations.
+const uint8_t REST_LISTEN_PORT = 80;
+const char* REST_ID = "Esp8266";
+const char* REST_NAME = "IrrigatingSystem";
+
+// OTA configurations.
+const uint8_t OTA_LISTEN_PORT = 8000;
+const char* OTA_HOST_NAME = "YOUR-OTA-HOST-NAME";
+const char* OTA_MD5_HASHED_PASSWORD = "YOUR-HASHED-PW";
+
+// NTP configurations.
+const char* NTP_HOST = "pool.ntp.org";
+const int NTP_TIME_OFFSET = (2*60*60); // 2 hours.
+
+// Automated-Irrigating-System configurations.
+const uint8_t CRITICAL_TEMPERATURE = 85; // Celcius.
+const uint8_t MAX_MINUTE_DIFFERENCE = 30;
+
+} // namespace system_configuration
+} // namespace automated_irrigating_system
